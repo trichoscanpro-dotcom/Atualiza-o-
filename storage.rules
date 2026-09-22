@@ -1,0 +1,26 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email == 'luuh90902017@gmail.com'
+      );
+    }
+
+    // Public assets and brand logos
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin() &&
+                   request.resource.size < 10 * 1024 * 1024 &&
+                   request.resource.contentType.matches('image/.*');
+    }
+
+    // Portfolio and service media
+    match /media/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin() &&
+                   request.resource.size < 25 * 1024 * 1024;
+    }
+  }
+}

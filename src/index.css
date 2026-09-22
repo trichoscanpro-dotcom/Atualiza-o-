@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Enforce Two Fonts Rule: Poppins 700 for headings/titles, Inter 400/500 for texts, buttons & descriptions */
+body, button, input, select, textarea, p, span, a, label {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.font-title, 
+[class*="font-['Syne']"], 
+[class*="font-['Plus Jakarta Sans']"],
+[class*="font-['Poppins']"] {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+@keyframes amberGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(229, 169, 60, 0.4), 0 0 25px rgba(229, 169, 60, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.7), 0 0 40px rgba(229, 169, 60, 0.35);
+  }
+}
+
+.animate-amber-glow {
+  animation: amberGlow 2.5s ease-in-out infinite;
+}
+
